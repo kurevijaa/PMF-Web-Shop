@@ -1,0 +1,17 @@
+[
+    {
+        "name": "upaljač",
+        "price":99.99,
+        "description": "nnn",
+        "ratings":4.3,
+        "images":[{
+            "public_id":"/products/heheh123awpieru",
+            "url":"https://image.shutterstock.com/image-vector/flat-style-lighter-isolated-on-260nw-1751504711.jpg"
+        }],
+        "category":"Ostalo",
+        "seller":"PMF",
+        "stock":3,
+        "numOfReviews":32,
+        "reviews":[]
+    }
+]
