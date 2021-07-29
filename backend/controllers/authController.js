@@ -6,6 +6,7 @@ const sendToken = require('../utils/jwtToken');
 const sendEmail = require('../utils/sendEmail');
 
 const crypto = require('crypto');
+const user = require('../models/user');
 
 //CONTROLLER METODE
 
@@ -185,5 +186,52 @@ exports.logout = catchAsyncErrors(async(req,res,next) => {
     res.status(200).json({
         success: true,
         message: 'Odjavljeni ste'
+    })
+})
+
+// Admin rute
+
+
+// Dohvati SVE korisnike => /api/v1/admin/users
+exports.allUsers = catchAsyncErrors(async (req,res,next) => {
+    const users = await User.find();
+
+    res.status(200).json({
+        success: true,
+        users
+    })
+})
+
+// Dohvati detalje korisnika => /api/v1/admin/user:id
+exports.getUserDetails = catchAsyncErrors(async (req,res,next) => {
+    const user = await User.findById(req.params.id);
+
+    if(!user){
+        return next(new ErrorHandler('Traženi korisnik ne postoji'))
+    }
+
+    res.status(200).json({
+        success: true,
+        user
+    })
+})
+
+// Ažuriranje korisničkog profila => /api/v1/admin/user/:id
+exports.updateUser = catchAsyncErrors(async(req,res,next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    }
+
+
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+
+    res.status(200).json({
+        sucess: true
     })
 })
