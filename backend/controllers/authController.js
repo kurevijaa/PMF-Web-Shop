@@ -235,3 +235,21 @@ exports.updateUser = catchAsyncErrors(async(req,res,next) => {
         sucess: true
     })
 })
+
+
+// Izbriši korisnika => /api/v1/admin/user:id
+exports.deleteUser = catchAsyncErrors(async (req,res,next) => {
+    const user = await User.findById(req.params.id);
+
+    if(!user){
+        return next(new ErrorHandler('Traženi korisnik ne postoji'))
+    }
+    await user.remove();
+
+    // Brisanje avatara s cloudinary - TODO
+
+    res.status(200).json({
+        success: true,
+        
+    })
+})
