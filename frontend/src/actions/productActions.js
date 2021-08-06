@@ -9,9 +9,11 @@ import {
 
 //Dohvaćanje proizvoda iz backenda
 
-export const getProducts=() => async(dispatch) => {
+export const getProducts=() => async (dispatch) => {
     try {
-        dispatch({ type: ALL_PRODUCTS_REQUEST})
+        dispatch({ 
+            type: ALL_PRODUCTS_REQUEST
+        })
 
         const { data } = await axios.get('/api/v1/products')
 
@@ -29,7 +31,7 @@ export const getProducts=() => async(dispatch) => {
 }
 
 // Clear errors 
-export const clearErrors=() => async (dispatch) => {
+export const clearErrors = () => async (dispatch) => {
     dispatch({
         type: CLEAR_ERRORS
     })
