@@ -1,10 +1,26 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
 import { Carousel } from 'react-bootstrap'
 
+import Product from "./product/Product"
 import '../App.css'
 
-const Home = () => (
-    <Fragment>
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../actions/productActions'
+
+const Home = () => {
+
+
+    //react hook useEffect 
+    const dispatch = useDispatch();
+
+    const { loading, products, error, productsCount } = useSelector(state => state.products)
+
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch])
+
+    return (
+        <Fragment>
         <Carousel fade>
             <Carousel.Item>
 
@@ -52,7 +68,25 @@ const Home = () => (
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
+
+
+        <hr></hr>
+
+        <h2 id="products-heading"> Novo u našoj trgovini </h2>
+        <section id="products" className="container mt-5">
+            <div className="row">
+                {products && products.map(product => (
+                    <Product key={product._id} product={product}/>
+                ))}
+            </div>
+        </section>
+
+        <hr></hr>
     </Fragment>
-);
+
+    
+    )
+    
+    };
 export default Home
 

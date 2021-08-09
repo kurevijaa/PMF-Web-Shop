@@ -95,6 +95,9 @@ nav {
 /* Home page */
 #products_heading {
   margin-top: 1.8rem;
+  margin-left:auto;
+  margin-right:auto;
+  font-family: raleway;
 }
 
 .card {
@@ -119,7 +122,7 @@ nav {
 }
 
 #view_btn {
-  background-color: #fa9c23;
+  background-color: #1e73be;
   color: white;
 }
 
