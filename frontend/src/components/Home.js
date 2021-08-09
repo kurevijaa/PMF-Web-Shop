@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap'
 
 import Product from "./product/Product"
 import '../App.css'
+import Loader from "./layout/Loader";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../actions/productActions'
@@ -72,7 +73,11 @@ const Home = () => {
 
         <hr></hr>
 
-        <h2 id="products-heading"> Novo u našoj trgovini </h2>
+
+
+        <div class="heading-background">
+            <h2 id="products-heading"> Novo u našoj trgovini </h2>
+        </div>
         <section id="products" className="container mt-5">
             <div className="row">
                 {products && products.map(product => (
@@ -80,13 +85,10 @@ const Home = () => {
                 ))}
             </div>
         </section>
-
+        <div class="home-upperbottom"></div>
         <hr></hr>
     </Fragment>
-
-    
     )
-    
     };
 export default Home
 

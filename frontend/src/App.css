@@ -93,12 +93,26 @@ nav {
 }
 
 /* Home page */
+
+.heading-background {
+  text-align: center;
+  color: white;
+  margin-top:1.9rem ;
+  padding-top: 35px;
+  height: 100px;
+  background-color: #1e73be;
+}
+
+.home-upperbottom{
+  background-color: #1e73be;
+  height: 100px;
+}
+
 #products_heading {
   margin-top: 1.8rem;
-  margin-left:auto;
-  margin-right:auto;
   font-family: raleway;
 }
+
 
 .card {
   height: 100%;
