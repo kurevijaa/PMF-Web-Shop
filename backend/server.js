@@ -4,6 +4,8 @@ const connectDatabase=require('./config/database')
 const dotenv=require('dotenv');
 const { connect } = require('./routes/product');
 
+
+
 //Handle uncaught exceptions
 process.on('uncaughtException', err => {
     console.log(`ERROR: ${err.stack}`);

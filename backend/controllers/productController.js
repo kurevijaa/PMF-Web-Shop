@@ -19,6 +19,7 @@ exports.newProduct=catchAsyncErrors(async(req,res,next) =>{
 // dohvati sve podatke   =>   /api/v1/products?keyword=hoodica
 exports.getProducts = catchAsyncErrors(async (req, res, next) =>{
 
+
     const resPerPage = 5;
     const productsCount = await Product.countDocuments();
 
