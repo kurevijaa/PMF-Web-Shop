@@ -204,10 +204,10 @@ footer {
 
 #cart_btn,
 #review_btn {
-  border-radius: 2rem;
-  background-color: #fa9c23;
+  border-radius: 1rem;
+  background-color: #1e73be;
   border: none;
-  padding: 0.5rem 2rem;
+  padding: 0.3rem 1.5rem;
 }
 
 #product_seller {
@@ -231,6 +231,9 @@ footer {
 
 #product_image {
   margin-top: 9rem;
+  width:640px; 
+  height: 500px;
+
 }
 
 /* Loader */
@@ -290,8 +293,8 @@ footer {
 
 #checkout_btn,
 .review-btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #1e73be;
+  border-color: #1e73be;
   margin-top: 2rem;
   border-radius: 5rem;
 }

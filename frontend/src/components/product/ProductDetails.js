@@ -44,14 +44,14 @@ const ProductDetails = ({match}) => {
 
                         <div className="col-12 col-lg-5 mt-5">
                             <h3>{product.name}</h3>
-                            <p id="product_id">Product # {product._id}</p>
+                            <p id="product_id">Proizvod # {product._id}</p>
 
                             <hr />
 
                             <div className="rating-outer">
                                 <div className="rating-inner" style={{ width: `${(product.ratings / 5) * 100}%` }}></div>
                             </div>
-                            <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
+                            <span id="no_of_reviews">({product.numOfReviews} Recenzija)</span>
 
                             <hr />
 
@@ -63,6 +63,8 @@ const ProductDetails = ({match}) => {
 
                                 <span className="btn btn-primary plus">+</span>
                             </div>
+                            <br/> 
+                            <br/>
                             <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4" >Dodaj u košaricu</button>
 
                             <hr />
@@ -71,13 +73,13 @@ const ProductDetails = ({match}) => {
 
                             <hr />
 
-                            <h4 className="mt-2">Description:</h4>
+                            <h4 className="mt-2">Opis:</h4>
                             <p>{product.description}</p>
                             <hr />
-                            <p id="product_seller mb-3">Sold by: <strong>{product.seller}</strong></p>
+                            <p id="product_seller mb-3">Prodavač: <strong>{product.seller}</strong></p>
 
                             <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal" >
-                                Submit Your Review
+                                Pošaljite svoju recenziju
                             </button>
                             
 
