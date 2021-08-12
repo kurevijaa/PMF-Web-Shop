@@ -6,11 +6,10 @@ import 'rc-slider/assets/index.css';
 
 import Product from "./product/Product"
 import '../App.css'
-import Loader from "./layout/Loader";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';
-import { getProducts } from '../actions/productActions'
+import { getProductsFilterPrice } from '../actions/productActions'
 
 
 const { createSliderWithTooltip } = Slider;
@@ -34,7 +33,7 @@ function StorePage({ match }) {
         if (error) {
             return alert.error(error)
         }
-        dispatch(getProducts(keyword, currentPage, price));
+        dispatch(getProductsFilterPrice(keyword, currentPage, price));
 
 
     }, [dispatch, alert, error, keyword, currentPage, price])
@@ -74,7 +73,7 @@ function StorePage({ match }) {
                             </div>
                             <div className="col-6 col-md-9">
                                 <div className="row">
-                                    {products && products.map(product => (
+                                    {products.map(product => (
                                         <Product key={product._id} product={product} col={4} />
                                     ))}
                                 </div>
@@ -82,7 +81,7 @@ function StorePage({ match }) {
                         </Fragment>
 
                     ) : (
-                        products && products.map(product => (
+                        products.map(product => (
                             <Product key={product._id} product={product} col={3}/>
                         ))
                     )}

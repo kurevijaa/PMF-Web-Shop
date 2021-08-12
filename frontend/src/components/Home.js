@@ -4,6 +4,7 @@ import { Carousel } from 'react-bootstrap'
 
 import Product from "./product/Product"
 import '../App.css'
+import StorePage from "./StorePage"
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';

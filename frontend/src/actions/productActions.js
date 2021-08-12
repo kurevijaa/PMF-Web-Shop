@@ -13,16 +13,15 @@ import {
 
 //Dohvaćanje proizvoda iz backenda
 
-export const getProducts = (keyword='', currentPage = 1, price) => async (dispatch) => {
+export const getProducts = (keyword='', currentPage = 1) => async (dispatch) => {
     try {
         dispatch({
             type: ALL_PRODUCTS_REQUEST
         })
 
-        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`;
+        let link = `http://localhost:4000/api/v1/products?keyword=${keyword}&page=${currentPage}`;
 
         const { data } = await axios.get(link)
-        console.log(data);
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
@@ -53,6 +52,29 @@ export const getProductDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+export const getProductsFilterPrice = (keyword='', currentPage = 1, price) => async (dispatch) => {
+    try {
+        dispatch({
+            type: ALL_PRODUCTS_REQUEST
+        })
+
+        let link = `http://localhost:4000/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`;
+
+        const { data } = await axios.get(link)
+
+        dispatch({
+            type: ALL_PRODUCTS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: ALL_PRODUCTS_FAIL,
             payload: error.response.data.message
         })
     }
