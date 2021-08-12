@@ -1,27 +1,23 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Carousel } from 'react-bootstrap'
 
-import Pagination from 'react-js-pagination'
-
 
 import Product from "./product/Product"
 import '../App.css'
-import Loader from "./layout/Loader";
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';
 import { getProducts } from '../actions/productActions'
 
-const Home = ({ match }) => {
+const Home = ({match}) => {
 
-    const [currentPage, setCurrentPage] = useState(1)
 
 
     //react hooks useEffect, useAlert
     const alert = useAlert();
     const dispatch = useDispatch();
 
-    const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.products)
+    const { products, error } = useSelector(state => state.products)
 
     const keyword = match.params.keyword
 
@@ -29,14 +25,12 @@ const Home = ({ match }) => {
         if (error) {
             return alert.error(error)
         }
-        dispatch(getProducts(keyword, currentPage));
+        dispatch(getProducts(keyword));
 
 
-    }, [dispatch, alert, error, keyword, currentPage])
+    }, [dispatch, alert, error, keyword])
 
-    function setCurrentPageNo(pageNumber) {
-        setCurrentPage(pageNumber)
-    }
+
 
     return (
         <Fragment>
@@ -103,22 +97,7 @@ const Home = ({ match }) => {
                     ))}
                 </div>
             </section>
-            {resPerPage <= productsCount && (
-                <div className="d-flex justify-content-center mt-5">
-                    <Pagination
-                        activePage={currentPage}
-                        itemsCountPerPage={resPerPage}
-                        totalItemsCount={productsCount}
-                        onChange={setCurrentPageNo}
-                        nextPageText={'Slijedeća'}
-                        prevPageText={'Prethodna'}
-                        firstPageText={'Prva'}
-                        lastPageText={'Posljednja'}
-                        itemClass="page-item"
-                        linkClass="page-link"
-                    />
-                </div>
-            )}
+            
             <div class="home-upperbottom"></div>
             <hr></hr>
         </Fragment>

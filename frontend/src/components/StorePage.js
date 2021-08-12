@@ -1,5 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import Pagination from 'react-js-pagination'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css';
 
 
 import Product from "./product/Product"
@@ -11,9 +13,13 @@ import { useAlert } from 'react-alert';
 import { getProducts } from '../actions/productActions'
 
 
+const { createSliderWithTooltip } = Slider;
+const Range = createSliderWithTooltip(Slider.Range)
+
 function StorePage({ match }) {
 
     const [currentPage, setCurrentPage] = useState(1)
+    const [price, setPrice] = useState([1, 1000])
 
 
     //react hooks useEffect, useAlert
@@ -28,10 +34,10 @@ function StorePage({ match }) {
         if (error) {
             return alert.error(error)
         }
-        dispatch(getProducts(keyword, currentPage));
+        dispatch(getProducts(keyword, currentPage, price));
 
 
-    }, [dispatch, alert, error, keyword, currentPage])
+    }, [dispatch, alert, error, keyword, currentPage, price])
 
     function setCurrentPageNo(pageNumber) {
         setCurrentPage(pageNumber)
@@ -43,9 +49,44 @@ function StorePage({ match }) {
             </div>
             <section id="products" className="container mt-5">
                 <div className="row">
-                    {products && products.map(product => (
-                        <Product key={product._id} product={product} />
-                    ))}
+
+                    {keyword ? (
+                        <Fragment>
+                            <div className="col-6 col-md-3 mt-5 mb-5">
+                                <div className="px-5">
+                                    <Range
+                                        marks={{
+                                            1: `1kn`,
+                                            1000: `1000kn`
+                                        }}
+                                        min={1}
+                                        max={1000}
+                                        defaultValue={[1, 1000]}
+                                        tipFormatter={value => `kn${value}`}
+                                        tipProps={{
+                                            placement: 'top',
+                                            visible: true
+                                        }}
+                                        value={price}
+                                        onchange={price => setPrice(price)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-6 col-md-9">
+                                <div className="row">
+                                    {products && products.map(product => (
+                                        <Product key={product._id} product={product} col={4} />
+                                    ))}
+                                </div>
+                            </div>
+                        </Fragment>
+
+                    ) : (
+                        products && products.map(product => (
+                            <Product key={product._id} product={product} col={3}/>
+                        ))
+                    )}
+
                 </div>
             </section>
             {resPerPage <= productsCount && (
