@@ -36,6 +36,7 @@ function StorePage({ match }) {
         dispatch(getProductsFilterPrice(keyword, currentPage, price));
 
 
+
     }, [dispatch, alert, error, keyword, currentPage, price])
 
     function setCurrentPageNo(pageNumber) {

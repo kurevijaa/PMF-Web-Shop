@@ -7,3 +7,7 @@ Testing and running app:
 split terminal
 starting frontend server: cd frontend/ then npm start
 starting backend server: npm run dev
+
+--------------------------------------------------------------------------------------------------------------------------------
+napomene:
+popraviti price filter slider 
