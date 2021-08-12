@@ -81,6 +81,18 @@ nav {
 
 }
 
+
+#tab1{
+
+  font-size: 1rem;
+  color: white;
+  margin-right: 40px;
+  margin-left:125px;
+  padding:1rem;
+
+  
+}
+
 #cart_count {
   background-color: #ffffff;
   padding: 0.5rem 0.7rem;
