@@ -11,7 +11,7 @@ const header = () => {
             <nav className="navbar row">
                 <div className="col-12 col-md-3">
                     <div className="navbar-brand">
-                        <img src="/images/pmfshop.png" width="75" height="75" />
+                        <a href='/'><img src="/images/pmfshop.png" width="75" height="75" /></a>
                         <a href="/Trgovina" id="tab1">Trgovina</a>
 
                     </div>
