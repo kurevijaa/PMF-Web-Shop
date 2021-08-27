@@ -40,8 +40,9 @@ const productSchema = new mongoose.Schema({
         required:[true, 'Molimo odaberite kategoriju proizvoda!'],
         enum:{
             values:[
-                'Kratke majice',
+                'Majice',
                 'Hoodice',
+                'Uredski pribor',
                 'Ostalo'
             ],
             message:'Molimo odaberite kategoriju za proizvod!'

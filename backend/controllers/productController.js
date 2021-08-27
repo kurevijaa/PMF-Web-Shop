@@ -28,6 +28,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) =>{
                         .filter()
                         .pagination(resPerPage)
     const products=await APIFeaturess.query;
+    console.log(products,req.query)
 
     res.status(200).json({
         success: true,

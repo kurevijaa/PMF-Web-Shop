@@ -9,7 +9,7 @@ import '../App.css'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert';
-import { getProductsFilterPrice } from '../actions/productActions'
+import { getProductsStorePage } from '../actions/productActions'
 
 
 const { createSliderWithTooltip } = Slider;
@@ -19,6 +19,14 @@ function StorePage({ match }) {
 
     const [currentPage, setCurrentPage] = useState(1)
     const [price, setPrice] = useState([1, 1000])
+    const [category, setCategory] = useState('')
+
+    const categories = [
+        'Majice',
+        'Hoodice',
+        'Uredski pribor',
+        'Ostalo'
+    ]
 
 
     //react hooks useEffect, useAlert
@@ -33,11 +41,12 @@ function StorePage({ match }) {
         if (error) {
             return alert.error(error)
         }
-        dispatch(getProductsFilterPrice(keyword, currentPage, price));
+        console.log(category)
+        dispatch(getProductsStorePage(keyword, currentPage, price, category));
 
 
 
-    }, [dispatch, alert, error, keyword, currentPage, price])
+    }, [dispatch, alert, error, keyword, currentPage, price, category])
 
     function setCurrentPageNo(pageNumber) {
         setCurrentPage(pageNumber)
@@ -49,8 +58,8 @@ function StorePage({ match }) {
             </div>
             <section id="products" className="container mt-5">
                 <div className="row">
-
-                    {keyword ? (
+                    {/* filter po cijeni i kategorijama (prikazuje se samo kada se traži određeni proizvod) */}
+                    
                         <Fragment>
                             <div className="col-6 col-md-3 mt-5 mb-5">
                                 <div className="px-5">
@@ -67,9 +76,28 @@ function StorePage({ match }) {
                                             placement: 'top',
                                             visible: true
                                         }}
-                                        value={price}
-                                        onchange={price => setPrice(price)}
+                                        onAfterChange={price => {console.log(price);setPrice(price)}}
                                     />
+                                    <hr className="my-5" />
+
+                                    <div className="mt-5">
+                                        <h4 className="mb-3">
+                                            Kategorije
+                                        </h4>
+
+                                        <ul className="pl-0">
+                                            {categories.map(category => (
+                                                <li
+                                                    style={{ cursor: 'pointer', listStyleType: "none" }}
+                                                    key={category}
+                                                    onClick={() => setCategory(category)}
+                                                >
+                                                    {category}
+                                                </li>
+
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-6 col-md-9">
@@ -81,14 +109,14 @@ function StorePage({ match }) {
                             </div>
                         </Fragment>
 
-                    ) : (
-                        products.map(product => (
-                            <Product key={product._id} product={product} col={3}/>
-                        ))
-                    )}
+                    
+
 
                 </div>
             </section>
+
+            
+            {/* pagination */}
             {resPerPage <= productsCount && (
                 <div className="d-flex justify-content-center mt-5">
                     <Pagination
