@@ -7,11 +7,18 @@ const sendEmail = require('../utils/sendEmail');
 
 const crypto = require('crypto');
 const user = require('../models/user');
+const cloudinary = require('cloudinary');
 
 //CONTROLLER METODE
 
 // Registriraj korisnika => /api/v1/register
 exports.registerUser = catchAsyncErrors( async(req, res, next) => {
+
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: 'avatars',
+        width: 150,
+        crop: "scale"
+    })
 
     const {name, email, password} = req.body;
 
@@ -20,8 +27,8 @@ exports.registerUser = catchAsyncErrors( async(req, res, next) => {
         email,
         password,
         avatar:{
-            public_id: 'webshop%20testing/businessman-character-avatar-isolated_24877-60111_sdggoe',
-            url: 'https://res.cloudinary.com/djntlk65g/image/upload/v1626192951/webshop%20testing/businessman-character-avatar-isolated_24877-60111_sdggoe.jpg'
+            public_id: result.public_id,
+            url: result.secure_url
         }
     })
 

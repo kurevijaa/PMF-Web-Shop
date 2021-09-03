@@ -109,15 +109,15 @@ nav {
 .heading-background {
   text-align: center;
   color: white;
-  margin-top:1.9rem ;
-  padding-top: 35px;
-  height: 100px;
+  margin-top:1.5rem ;
+  padding-top: 23px;
+  height: 75px;
   background-color: #1e73be;
 }
 
 .home-upperbottom{
   background-color: #1e73be;
-  height: 100px;
+  height: 75px;
 }
 
 #products_heading {
