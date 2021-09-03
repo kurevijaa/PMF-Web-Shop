@@ -364,6 +364,7 @@ footer {
   margin-top: 5rem;
 
   font-weight: 700;
+
 }
 
 .wrapper form {
@@ -371,15 +372,17 @@ footer {
 }
 
 .wrapper form .btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #1e73be;
+  border-color: #ffffff;
   color: white;
   margin-top: 2.5rem;
+  margin-left: auto;
 }
 
 .wrapper form a {
   font-size: 0.9rem;
   color: grey;
+  
 }
 
 /* Avatar */
