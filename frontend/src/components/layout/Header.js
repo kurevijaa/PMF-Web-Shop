@@ -5,6 +5,7 @@ import StorePage from '../StorePage'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
+import { logout } from '../../actions/userActions'
 
 import '../../App.css'
 
@@ -14,6 +15,11 @@ const header = () => {
     const dispatch = useDispatch();
 
     const { user, loading } = useSelector(state => state.auth)
+
+    const logoutHandler = () =>{
+        dispatch(logout());
+        alert.success("Uspješno ste odjavljeni")
+    }
 
     return (
         <Fragment>
@@ -61,7 +67,7 @@ const header = () => {
                                 )}
                                 <Link className="dropdown-item" to="/me">Profil</Link>
 
-                                <Link className="dropdown-item text-danger" to="/">
+                                <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>
                                     Odjavite se
                                 </Link>
                             </div>
