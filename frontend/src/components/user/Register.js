@@ -149,7 +149,7 @@ const Register = ({ history }) => {
                             className="btn btn-block py-3"
                             disabled={loading ? true : false}
                         >
-                            REGISTER
+                            Registriraj se
                         </button>
                     </form>
                 </div>

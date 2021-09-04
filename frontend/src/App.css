@@ -112,14 +112,14 @@ nav {
   text-align: center;
   color: white;
   margin-top:1.5rem ;
-  padding-top: 23px;
-  height: 75px;
+  padding-top: 12px;
+  height: 60px;
   background-color: #1e73be;
 }
 
 .home-upperbottom{
   background-color: #1e73be;
-  height: 75px;
+  height: 60px;
 }
 
 #products_heading {
@@ -503,8 +503,8 @@ footer {
 /* User Profile */
 
 .avatar-profile {
-  height: 16rem;
-  width: 16rem;
+  height: 14.5rem;
+  width: 14.5rem;
 }
 
 .user-info h4 {
@@ -518,8 +518,23 @@ footer {
 }
 
 #edit_profile {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #1e73be;
+  border-color: #ffffff;
+  margin-left: 90px;
+  display:inline-block;
+
+}
+#myordersbtn{
+  background-color: #1e73be;
+  border-color: #ffffff;
+  display:inline-block;
+
+}
+#changepassbtn{
+  background-color: #1e73be;
+  border-color: #ffffff;
+  display:inline-block;
+
 }
 
 /* Confirm Order */
@@ -530,8 +545,8 @@ footer {
 }
 
 .update-btn {
-  background-color: #fa9c23;
-  border-color: #fa9c23;
+  background-color: #1e73be;
+  border-color: #ffffff;
   color: white;
 }
 
